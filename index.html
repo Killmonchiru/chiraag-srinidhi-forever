@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chiraag & Srinidhi Forever</title>
+
+  <!-- Optional font (safe to remove if you want default font) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Playfair Display', Georgia, serif;
+      background: #000;
+      color: #fff;
+      transition: background-image 1s ease-in-out;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 1;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 24px 80px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 30px;
+      letter-spacing: 1px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      margin-bottom: 50px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
+      cursor: pointer;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .heart-btn {
+      margin: 30px auto 10px;
+      padding: 14px 28px;
+      font-size: 1.3rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      background: rgba(255, 90, 130, 0.85);
+      color: white;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .heart-btn:hover {
+      transform: scale(1.08);
+      background: rgba(255, 120, 150, 1);
+    }
+
+    .hidden-page {
+      display: none;
+      min-height: 100vh;
+      background-image: url("images/hearts.jpg");
+      background-size: cover;
+      background-position: center;
+      padding: 80px 24px;
+    }
+
+    .hidden-content {
+      max-width: 900px;
+      margin: auto;
+      background: rgba(0, 0, 0, 0.55);
+      padding: 40px 44px;
+      border-radius: 28px;
+      font-size: 1.5rem;
+      line-height: 1.8;
+      opacity: 0.95;
+    }
+
+    footer {
+      margin-top: 60px;
+      opacity: 0.85;
+    }
+.photo-text {
+  display: none;
+  max-width: 850px;
+  margin: 60px auto 0;
+  font-size: 1.5rem;
+  line-height: 1.8;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 30px 36px;
+  border-radius: 24px;
+}
+.rotate-left {
+  transform: rotate(-90deg);
+}
+
+.rotate-left {
+  transform: rotate(-90deg);
+}
+
+.back-btn {
+  display: none;
+  margin: 40px auto 0;
+  padding: 12px 26px;
+  font-size: 1.1rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.back-btn:hover {
+  transform: scale(1.08);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+  </style>
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+<div class="container" id="mainPage">
+  <h1 id="mainTitle">Every Moment With You</h1>
+
+  <div class="gallery" id="gallery">
+    <img src="images/img1.jpg" onclick="setBg(this.src,0)">
+    <img src="images/img2.jpg" onclick="setBg(this.src,1)">
+    <img src="images/img3.jpg" class="rotate-left" onclick="setBg(this.src,2)">
+    <img src="images/img4.jpg" class="rotate-left" onclick="setBg(this.src,3)">
+    <img src="images/img5.jpg" onclick="setBg(this.src,4)">
+    <img src="images/img6.jpg" onclick="setBg(this.src,5)">
+    <img src="images/img7.jpg" onclick="setBg(this.src,6)">
+    <img src="images/img8.jpg" onclick="setBg(this.src,7)">
+  </div>
+
+<div id="photoText" class="photo-text"></div>
+
+<button id="backBtn" class="back-btn" onclick="goBack()">
+  ← Back to Gallery
+</button>
+
+  <button class="heart-btn" onclick="openHidden()">
+    ❤️ From me to You
+  </button>
+
+  <footer>
+    Chiraag × Srinidhi
+  </footer>
+</div>
+
+<!-- Hidden Message Page -->
+<div class="hidden-page" id="hiddenPage">
+  <div class="hidden-content">
+    Seeing your photos, I can tell the world was kind to you long before I came along.<br><br>
+
+    But in loving you, I know it was kind to me too.<br><br>
+
+    Every moment with you, every smile you carry,<br>
+    is something my heart wants to hold onto forever.<br><br>
+
+    I love you—not because you’re perfect,<br>
+    but because you’re <i>you</i>.<br><br>
+
+    Srinidhi, you are more than words or moments.<br>
+    You are my favorite thought, my wildest dream,<br>
+    and the one my heart chooses—again and again, always.
+  </div>
+</div>
+
+<script>
+  const paragraphs = [
+    `Your smile has a way of making the world slow down,
+     like everything finally makes sense when you’re near.
+     Loving you feels effortless,
+     like my heart always knew where it belonged.`,
+
+    `Every photo of you feels like a moment frozen in time,
+     a reminder of how lucky I am to call you mine.
+     You don’t just brighten my days,
+     you give them meaning.`,
+
+    `There’s something about you that feels like comfort and chaos at once,
+     in the best way possible.
+     You make ordinary moments unforgettable,
+     just by being you.`,
+
+    `You carry warmth in your eyes,
+     the kind that makes even silence feel safe.
+     With you, love isn’t loud—
+     it’s steady, soft, and real.`,
+
+    `Every laugh of yours feels like a promise,
+     every glance like a secret meant just for me.
+     Loving you isn’t a choice,
+     it’s instinct.`,
+
+    `You have this quiet magic about you,
+     the kind that doesn’t need to try.
+     Being with you feels like home,
+     no matter where we are.`,
+
+    `You’re playful, beautiful, and endlessly special,
+     and somehow you still feel so familiar.
+     My heart doesn’t question it anymore—
+     it just chooses you.`,
+
+    `Seeing your photos, I can tell the world was kind to you long before I came along.
+     But in loving you, I know it was kind to me too.
+     You are my favorite thought, my wildest dream,
+     and the one my heart chooses—again and again, always.`
+  ];
+
+  function setBg(src, index) {
+    document.body.style.backgroundImage = `url('${src}')`;
+
+    document.getElementById("gallery").style.display = "none";
+    document.getElementById("mainTitle").style.display = "none";
+
+    const textBox = document.getElementById("photoText");
+    textBox.innerHTML = paragraphs[index].replace(/\n/g, "<br>");
+    textBox.style.display = "block";
+
+    document.getElementById("backBtn").style.display = "block";
+  }
+
+  function goBack() {
+    document.body.style.backgroundImage = "none";
+
+    document.getElementById("gallery").style.display = "grid";
+    document.getElementById("mainTitle").style.display = "block";
+
+    document.getElementById("photoText").style.display = "none";
+    document.getElementById("backBtn").style.display = "none";
+  }
+
+  function openHidden() {
+    document.getElementById("mainPage").style.display = "none";
+    document.getElementById("hiddenPage").style.display = "block";
+  }
+</script>
+
+</body>
+</html>
