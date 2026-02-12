@@ -161,6 +161,26 @@
     opacity: 0;
   }
 }
+#musicBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 5;
+  background: rgba(255, 90, 130, 0.85);
+  border: none;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+#musicBtn:hover {
+  transform: scale(1.1);
+  background: rgba(255, 120, 150, 1);
+}
 
   </style>
 </head>
@@ -309,11 +329,55 @@ function createHeart() {
 
 // Create hearts continuously
 setInterval(createHeart, 2500);
+// YouTube Background Music
+let player;
+let isMuted = true;
+
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('player', {
+    videoId: 'KZGWfHdfWQs&list=RDKZGWfHdfWQs&start_radio=1',
+    playerVars: {
+      autoplay: 1,
+      loop: 1,
+      playlist: 'KZGWfHdfWQs&list=RDKZGWfHdfWQs&start_radio=1',
+      controls: 0,
+      showinfo: 0,
+      modestbranding: 1
+    },
+    events: {
+      onReady: function (event) {
+        event.target.mute(); // Autoplay muted
+        event.target.playVideo();
+      }
+    }
+  });
+}
+
+function toggleMusic() {
+  if (!player) return;
+
+  if (isMuted) {
+    player.unMute();
+    document.getElementById("musicBtn").innerHTML = "🔊";
+  } else {
+    player.mute();
+    document.getElementById("musicBtn").innerHTML = "🔇";
+  }
+  isMuted = !isMuted;
+}
 
 </script>
+<!-- YouTube Invisible Player -->
+<div id="player" style="position:fixed; bottom:0; right:0; width:0; height:0; overflow:hidden;"></div>
+
+<!-- Mute / Unmute Button -->
+<button id="musicBtn" onclick="toggleMusic()">🔇</button>
+
+<script src="https://www.youtube.com/iframe_api"></script>
 
 </body>
 </html>
+
 
 
 
