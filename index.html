@@ -26,14 +26,11 @@
   body {
   margin: 0;
   font-family: 'Playfair Display', Georgia, serif;
-  background: #000;
+  background: url("Snake.jpg") no-repeat center center fixed;
+  background-size: cover;
   color: #fff;
   transition: background-image 1s ease-in-out;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
-
 
     .overlay {
       position: fixed;
@@ -316,7 +313,7 @@
   }
 
   function goBack() {
-    document.body.style.backgroundImage = "none";
+    document.body.style.backgroundImage = "url('Snake.jpg')";
 
     document.getElementById("gallery").style.display = "grid";
     document.getElementById("mainTitle").style.display = "block";
@@ -399,6 +396,7 @@ function toggleMusic() {
 
 </body>
 </html>
+
 
 
 
