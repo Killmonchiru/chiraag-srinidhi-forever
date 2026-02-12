@@ -141,6 +141,26 @@
   transform: scale(1.08);
   background: rgba(255, 255, 255, 0.3);
 }
+/* Floating Hearts */
+.floating-heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 20px;
+  animation: floatUp 6s linear forwards;
+  z-index: 3;
+  pointer-events: none;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) scale(1.5);
+    opacity: 0;
+  }
+}
 
   </style>
 </head>
@@ -267,8 +287,32 @@
     document.getElementById("mainPage").style.display = "none";
     document.getElementById("hiddenPage").style.display = "block";
   }
+  // Floating hearts generator
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("floating-heart");
+  heart.innerHTML = "❤️";
+
+  // Random horizontal position
+  heart.style.left = Math.random() * 100 + "vw";
+
+  // Random size
+  heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+
+  document.body.appendChild(heart);
+
+  // Remove heart after animation
+  setTimeout(() => {
+    heart.remove();
+  }, 6000);
+}
+
+// Create hearts continuously
+setInterval(createHeart, 500);
+
 </script>
 
 </body>
 </html>
+
 
