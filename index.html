@@ -195,6 +195,10 @@
   transform: scale(1.1);
   background: rgba(255, 120, 150, 1);
 }
+.side-symbol {
+  margin: 0 15px;
+  font-size: 2.5rem;
+}
 
   </style>
 </head>
@@ -204,7 +208,11 @@
 <div class="overlay"></div>
 
 <div class="container" id="mainPage">
-  <h1 id="mainTitle">Every Moment With You</h1>
+  <h1 id="mainTitle">
+  <span class="side-symbol">∞ 🎀</span>
+  Every Moment With You
+  <span class="side-symbol">🎀 ∞</span>
+</h1>
 
   <div class="gallery" id="gallery">
     <img src="images/img1.jpg" onclick="setBg(this.src,0)">
@@ -228,7 +236,7 @@
   </button>
 
   <footer>
-    Chiraag × Srinidhi
+    💖Chiraag × Srinidhi💖
   </footer>
 </div>
 
@@ -331,7 +339,7 @@ function createHeart() {
   heart.style.left = Math.random() * 100 + "vw";
 
   // Random size
-  heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+  heart.style.fontSize = (Math.random() * 34 + 15) + "px";
 
   document.body.appendChild(heart);
 
@@ -342,7 +350,7 @@ function createHeart() {
 }
 
 // Create hearts continuously
-setInterval(createHeart, 2500);
+setInterval(createHeart, 120);
 // YouTube Background Music
 let player;
 let isMuted = true;
@@ -391,6 +399,7 @@ function toggleMusic() {
 
 </body>
 </html>
+
 
 
 
