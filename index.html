@@ -1,372 +1,642 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Chiraag & Srinidhi Forever</title>
+  <meta charset="UTF-8">
+  <title>Chiraag & Srinidhi Forever</title>
 
+  <!-- Optional font (safe to remove if you want default font) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
-<style>
+  <style>
 
-/* GENERAL */
-* { box-sizing: border-box; }
-
-body {
+  body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: black;
-  color: white;
-  overflow-x: hidden;
+  font-family: 'Playfair Display', Georgia, serif;
+  background: #000;
+  color: #fff;
+  transition: background-image 1s ease-in-out;
+  background-size: cover;
+  background-position: center;
 }
 
-/* ================= GALAXY BACKGROUND ================= */
+    * {
+      box-sizing: border-box;
+    }
+
+  body {
+  margin: 0;
+  font-family: 'Playfair Display', Georgia, serif;
+  background: images/("Snake.jpg") no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  transition: background-image 1s ease-in-out;
+}
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 1;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 24px 80px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 30px;
+      letter-spacing: 1px;
+    }
+
+    .gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 50px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 18px;
+  cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+    .heart-btn {
+      margin: 30px auto 10px;
+      padding: 14px 28px;
+      font-size: 1.3rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      background: rgba(255, 90, 130, 0.85);
+      color: white;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .heart-btn:hover {
+      transform: scale(1.08);
+      background: rgba(255, 120, 150, 1);
+    }
+
+    .hidden-page {
+      display: none;
+      min-height: 100vh;
+      background-image: url("images/hearts.jpg");
+      background-size: cover;
+      background-position: center;
+      padding: 80px 24px;
+    }
+
+    .hidden-content {
+      max-width: 900px;
+      margin: auto;
+      background: rgba(0, 0, 0, 0.55);
+      padding: 40px 44px;
+      border-radius: 28px;
+      font-size: 1.5rem;
+      line-height: 1.8;
+      opacity: 0.95;
+    }
+
+    footer {
+      margin-top: 60px;
+      opacity: 0.85;
+    }
+.photo-text {
+  display: none;
+  max-width: 850px;
+  margin: 60px auto 0;
+  font-size: 1.5rem;
+  line-height: 1.8;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 30px 36px;
+  border-radius: 24px;
+}
+.rotate-left {
+  transform: rotate(-90deg);
+}
+
+.rotate-left {
+  transform: rotate(-90deg);
+}
+
+.back-btn {
+  display: none;
+  margin: 40px auto 0;
+  padding: 12px 26px;
+  font-size: 1.1rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.back-btn:hover {
+  transform: scale(1.08);
+  background: rgba(255, 255, 255, 0.3);
+}
+/* Floating Hearts */
+.floating-heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 20px;
+  animation: floatUp 6s linear forwards;
+  z-index: 3;
+  pointer-events: none;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) scale(1.5);
+    opacity: 0;
+  }
+}
+#musicBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 5;
+  background: rgba(255, 90, 130, 0.85);
+  border: none;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+#musicBtn:hover {
+  transform: scale(1.1);
+  background: rgba(255, 120, 150, 1);
+}
+.side-symbol {
+  margin: 0 15px;
+  font-size: 2.5rem;
+}
+/* PASSWORD PAGE */
+
+#passwordPage {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: url("images/heart.jpg") no-repeat center center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.password-box {
+  text-align: center;
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.4);
+  padding: 50px;
+  border-radius: 25px;
+  box-shadow: 0 0 40px rgba(255, 0, 0, 0.4);
+}
+
+.password-box h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3.5rem;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+#hint {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: #ffb6c1;
+  margin-bottom: 25px;
+  display: none;
+}
+
+.password-box input {
+  width: 250px;
+  padding: 12px;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.password-box button {
+  padding: 12px 25px;
+  border-radius: 30px;
+  border: none;
+  background: #ff2e63;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(255, 46, 99, 0.6);
+  transition: all 0.3s ease;
+}
+
+.password-box button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(255, 46, 99, 0.9);
+}
+
+#errorMessage {
+  margin-top: 15px;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+}
+
+/* SHAKE ANIMATION */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+.shake {
+  animation: shake 0.4s;
+}
+
+    /* ✨ MAGICAL TWINKLING STARS ✨ */
+
+#mainPage {
+  position: relative;
+  z-index: 1;
+}
 
 .stars {
   position: fixed;
-  top:0; left:0;
-  width:100%; height:100%;
-  background:black;
-  z-index:0;
-  overflow:hidden;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  overflow: hidden;
+  z-index: 0;
 }
 
 .stars::before {
-  content:"";
-  position:absolute;
-  width:200%; height:200%;
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
   background-image:
     radial-gradient(2px 2px at 20px 30px, white, transparent),
-    radial-gradient(2px 2px at 200px 150px, white, transparent),
-    radial-gradient(1.5px 1.5px at 400px 80px, white, transparent),
-    radial-gradient(2px 2px at 600px 200px, white, transparent),
-    radial-gradient(1.5px 1.5px at 800px 120px, white, transparent);
+    radial-gradient(2px 2px at 100px 150px, white, transparent),
+    radial-gradient(1.5px 1.5px at 200px 80px, white, transparent),
+    radial-gradient(2px 2px at 300px 200px, white, transparent),
+    radial-gradient(1.5px 1.5px at 400px 120px, white, transparent),
+    radial-gradient(2px 2px at 600px 250px, white, transparent),
+    radial-gradient(1.5px 1.5px at 800px 100px, white, transparent);
   background-repeat: repeat;
   animation: moveStars 80s linear infinite, twinkle 3s ease-in-out infinite;
+  opacity: 0.9;
 }
 
+/* Pink romantic glow */
 .stars::after {
-  content:"";
-  position:absolute;
-  width:100%; height:100%;
-  background:
-    radial-gradient(circle at 30% 40%, rgba(255,20,147,0.35), transparent 50%),
-    radial-gradient(circle at 70% 60%, rgba(255,105,180,0.3), transparent 50%),
-    radial-gradient(circle at center, rgba(255,0,102,0.25), transparent 60%);
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 30% 40%, rgba(255, 20, 147, 0.35), transparent 50%),
+    radial-gradient(circle at 70% 60%, rgba(255, 105, 180, 0.3), transparent 50%),
+    radial-gradient(circle at center, rgba(255, 0, 102, 0.25), transparent 60%);
 }
 
+
+/* Slow upward movement */
 @keyframes moveStars {
   from { transform: translateY(0); }
   to { transform: translateY(-800px); }
 }
 
+/* Twinkle effect */
 @keyframes twinkle {
-  0%,100% { opacity:0.8; }
-  50% { opacity:1; }
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
 }
 
-/* Shooting stars */
+/* 🌠 SHOOTING STARS */
+
 .shooting-stars {
-  position:fixed;
-  top:0; left:0;
-  width:100%; height:100%;
-  pointer-events:none;
-  z-index:0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .shooting-stars span {
-  position:absolute;
-  width:2px;
-  height:100px;
-  background:linear-gradient(-45deg, white, transparent);
-  transform:rotate(45deg);
-  animation:shoot 5s linear forwards;
+  position: absolute;
+  width: 2px;
+  height: 100px;
+  background: linear-gradient(-45deg, white, transparent);
+  opacity: 0;
+  transform: rotate(45deg);
+  animation: shoot 5s linear infinite;
 }
 
 @keyframes shoot {
-  0% { transform:translate(0,0) rotate(45deg); opacity:1; }
-  100% { transform:translate(-800px,800px) rotate(45deg); opacity:0; }
+  0% {
+    transform: translate(0, 0) rotate(45deg);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-800px, 800px) rotate(45deg);
+    opacity: 0;
+  }
 }
 
-/* ================= PASSWORD PAGE ================= */
-
-#passwordPage {
-  position:fixed;
-  width:100%;
-  height:100%;
-  background:url("images/heart-bg.jpg") no-repeat center center;
-  background-size:cover;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
-}
-
-.password-box {
-  text-align:center;
-  backdrop-filter:blur(10px);
-  background:rgba(0,0,0,0.4);
-  padding:50px;
-  border-radius:25px;
-  box-shadow:0 0 50px rgba(255,0,102,0.7);
-}
-
-.password-box h1 {
-  font-family:'Great Vibes', cursive;
-  font-size:3.5rem;
-  margin-bottom:10px;
-}
-
-#hint {
-  display:none;
-  color:#ffb6c1;
-  margin-bottom:20px;
-}
-
-.password-box input {
-  padding:12px;
-  width:250px;
-  border-radius:30px;
-  border:none;
-  text-align:center;
-  margin-bottom:15px;
-}
-
-.password-box button {
-  padding:12px 25px;
-  border-radius:30px;
-  border:none;
-  background:#ff2e63;
-  color:white;
-  cursor:pointer;
-  box-shadow:0 0 20px rgba(255,46,99,0.6);
-}
-
-@keyframes shake {
-  0%{transform:translateX(0);}
-  25%{transform:translateX(-5px);}
-  50%{transform:translateX(5px);}
-  75%{transform:translateX(-5px);}
-  100%{transform:translateX(0);}
-}
-
-.shake { animation:shake 0.4s; }
-
-/* ================= MAIN PAGE ================= */
-
-.container {
-  position:relative;
-  z-index:2;
-  max-width:1200px;
-  margin:auto;
-  padding:40px 24px 80px;
-  text-align:center;
-}
-
-h1 {
-  font-family:'Great Vibes', cursive;
-  font-size:3rem;
-}
-
-.gallery {
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:20px;
-  margin-bottom:40px;
-}
-
-.gallery img {
-  width:100%;
-  height:250px;
-  object-fit:cover;
-  border-radius:18px;
-  cursor:pointer;
-  transition:0.4s;
-}
-
-.gallery img:hover { transform:scale(1.05); }
-
-.photo-text {
-  display:none;
-  background:rgba(0,0,0,0.5);
-  padding:25px;
-  border-radius:20px;
-}
-
-.back-btn {
-  display:none;
-  margin-top:20px;
-  padding:10px 20px;
-  border-radius:20px;
-  border:none;
-  cursor:pointer;
-}
-
-/* Floating hearts */
-.floating-heart {
-  position:fixed;
-  bottom:-20px;
-  animation:floatUp 6s linear forwards;
-  pointer-events:none;
-}
-
-@keyframes floatUp {
-  0%{transform:translateY(0);opacity:1;}
-  100%{transform:translateY(-100vh);opacity:0;}
-}
-
-/* Music button */
-#musicBtn {
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  z-index:5;
-  background:#ff2e63;
-  border:none;
-  border-radius:50%;
-  width:55px;
-  height:55px;
-  font-size:22px;
-  cursor:pointer;
-}
-
-</style>
+  </style>
 </head>
 
 <body>
-
-<div class="stars"></div>
-<div class="shooting-stars"></div>
-
-<!-- PASSWORD PAGE -->
+  
 <div id="passwordPage">
   <div class="password-box">
     <h1>The Key to My Heart</h1>
     <p id="hint">Most beautiful girl in my life</p>
-    <input type="password" id="passwordInput" placeholder="Enter the key...">
+
+    <input type="password" id="passwordInput" placeholder="Enter the key..." />
     <button onclick="checkPassword()">Unlock ❤️</button>
+
     <p id="errorMessage"></p>
   </div>
 </div>
+  
+<div class="stars"></div>
+<div class="shooting-stars"></div>
+  
+<div class="overlay"></div>
 
-<!-- MAIN PAGE -->
 <div class="container" id="mainPage">
+  <h1 id="mainTitle">
+  <span class="side-symbol">∞ 🎀</span>
+  Every Moment With You
+  <span class="side-symbol">🎀 ∞</span>
+</h1>
 
-<h1>∞ 🎀 Every Moment With You 🎀 ∞</h1>
-
-<div class="gallery" id="gallery">
-<img src="images/img1.jpg" onclick="setBg(this.src,0)">
-<img src="images/img2.jpg" onclick="setBg(this.src,1)">
-<img src="images/img3.jpg" onclick="setBg(this.src,2)">
-<img src="images/img4.jpg" onclick="setBg(this.src,3)">
-<img src="images/img5.jpg" onclick="setBg(this.src,4)">
-<img src="images/img6.jpg" onclick="setBg(this.src,5)">
-<img src="images/img7.jpg" onclick="setBg(this.src,6)">
-<img src="images/img8.jpg" onclick="setBg(this.src,7)">
-</div>
+  <div class="gallery" id="gallery">
+    <img src="images/img1.jpg" onclick="setBg(this.src,0)">
+    <img src="images/img2.jpg" onclick="setBg(this.src,1)">
+    <img src="images/img3.jpg" onclick="setBg(this.src,2)">
+    <img src="images/img4.jpg" onclick="setBg(this.src,3)">
+    <img src="images/img5.jpg" onclick="setBg(this.src,4)">
+    <img src="images/img6.jpg" onclick="setBg(this.src,5)">
+    <img src="images/img7.jpg" onclick="setBg(this.src,6)">
+    <img src="images/img8.jpg" onclick="setBg(this.src,7)">
+  </div>
 
 <div id="photoText" class="photo-text"></div>
-<button id="backBtn" class="back-btn" onclick="goBack()">Back</button>
 
+<button id="backBtn" class="back-btn" onclick="goBack()">
+  ← Back to Gallery
+</button>
+
+  <button class="heart-btn" onclick="openHidden()">
+    ❤️ From me to You
+  </button>
+
+  <footer>
+    💖Chiraag × Srinidhi💖
+  </footer>
 </div>
 
-<!-- YOUTUBE PLAYER -->
-<div id="player" style="width:0;height:0;overflow:hidden;"></div>
-<button id="musicBtn" onclick="toggleMusic()">🔊</button>
+<!-- Hidden Message Page -->
+<div class="hidden-page" id="hiddenPage">
+  <div class="hidden-content">
+    Seeing your photos, I can tell the world was kind to you long before I came along.<br><br>
+
+    But in loving you, I know it was kind to me too.<br><br>
+
+    Every moment with you, every smile you carry,<br>
+    is something my heart wants to hold onto forever.<br><br>
+
+    I love you—not because you’re perfect,<br>
+    but because you’re <i>you</i>.<br><br>
+
+    Srinidhi, you are more than words or moments.<br>
+    You are my favorite thought, my wildest dream,<br>
+    and the one my heart chooses—again and again, always.
+  </div>
+</div>
+
+<script>
+  const paragraphs = [
+    `Your smile has a way of making the world slow down,
+     like everything finally makes sense when you’re near.
+     Loving you feels effortless,
+     like my heart always knew where it belonged❤️❤️.`,
+
+    `Every photo of you feels like a moment frozen in time,
+     a reminder of how lucky I am to call you mine.
+     You don’t just brighten my days,
+     you give them meaning❤️❤️.`,
+
+    `There’s something about you that feels like comfort and chaos at once,
+     in the best way possible.
+     You make ordinary moments unforgettable,
+     just by being you❤️❤️.`,
+
+    `You carry warmth in your eyes,
+     the kind that makes even silence feel safe.
+     With you, love isn’t loud—
+     it’s steady, soft, and real❤️❤️.`,
+
+    `Every laugh of yours feels like a promise,
+     every glance like a secret meant just for me.
+     Loving you isn’t a choice,
+     it’s instinct❤️❤️.`,
+
+    `You have this quiet magic about you,
+     the kind that doesn’t need to try.
+     Being with you feels like home,
+     no matter where we are❤️❤️.`,
+
+    `You’re playful, beautiful, and endlessly special,
+     and somehow you still feel so familiar.
+     My heart doesn’t question it anymore—
+     it just chooses you❤️❤️.`,
+
+    `Seeing your photos, I can tell the world was kind to you long before I came along.
+     But in loving you, I know it was kind to me too.
+     You are my favorite thought, my wildest dream,
+     and the one my heart chooses—again and again, always❤️❤️.`
+  ];
+
+  function setBg(src, index) {
+    document.body.style.backgroundImage = `url('${src}')`;
+
+    document.getElementById("gallery").style.display = "none";
+    document.getElementById("mainTitle").style.display = "none";
+
+    const textBox = document.getElementById("photoText");
+    textBox.innerHTML = paragraphs[index].replace(/\n/g, "<br>");
+    textBox.style.display = "block";
+
+    document.getElementById("backBtn").style.display = "block";
+  }
+
+  function goBack() {
+    document.body.style.backgroundImage = "url('Snake.jpg')";
+
+    document.getElementById("gallery").style.display = "grid";
+    document.getElementById("mainTitle").style.display = "block";
+
+    document.getElementById("photoText").style.display = "none";
+    document.getElementById("backBtn").style.display = "none";
+  }
+
+  function openHidden() {
+    document.getElementById("mainPage").style.display = "none";
+    document.getElementById("hiddenPage").style.display = "block";
+  }
+  // Floating hearts generator
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("floating-heart");
+  heart.innerHTML = "❤️";
+
+  // Random horizontal position
+  heart.style.left = Math.random() * 100 + "vw";
+
+  // Random size
+  heart.style.fontSize = (Math.random() * 30 + 15) + "px";
+
+  document.body.appendChild(heart);
+
+  // Remove heart after animation
+  setTimeout(() => {
+    heart.remove();
+  }, 6000);
+}
+
+// Create hearts continuously
+setInterval(createHeart, 180);
+// YouTube Background Music
+let player;
+let isMuted = false;
+
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('player', {
+    videoId: 'KZGWfHdfWQs',
+    playerVars: {
+      autoplay: 1,
+      loop: 1,
+      playlist: 'KZGWfHdfWQs',
+      controls: 0,
+      showinfo: 0,
+      modestbranding: 1
+    },
+    events: {
+      onReady: function (event) {
+        event.target.unmute(); // Autoplay muted
+        event.target.playVideo();
+      }
+    }
+  });
+}
+
+function toggleMusic() {
+  if (!player) return;
+
+  if (isMuted) {
+    player.unMute();
+    document.getElementById("musicBtn").innerHTML = "🔊";
+  } else {
+    player.mute();
+    document.getElementById("musicBtn").innerHTML = "🔇";
+  }
+  isMuted = !isMuted;
+}
+function checkPassword() {
+  const correctPassword = "Srinidhi";  // CHANGE THIS
+  const input = document.getElementById("passwordInput");
+  const hint = document.getElementById("hint");
+  const errorMessage = document.getElementById("errorMessage");
+
+  if (input.value === correctPassword) {
+    document.getElementById("passwordPage").style.display = "none";
+  } else {
+    input.classList.add("shake");
+    setTimeout(() => input.classList.remove("shake"), 400);
+
+    hint.style.display = "block";
+    errorMessage.textContent = "Oops! That’s not the key… try again, pretty 🥺🎀";
+  }
+}
+function createShootingStar() {
+  const star = document.createElement("span");
+  star.style.top = Math.random() * window.innerHeight + "px";
+  star.style.left = Math.random() * window.innerWidth + "px";
+
+  document.querySelector(".shooting-stars").appendChild(star);
+
+  setTimeout(() => {
+    star.remove();
+  }, 5000);
+}
+
+setInterval(createShootingStar, 3250);
+
+</script>
+<!-- YouTube Invisible Player -->
+<div id="player" style="position:fixed; bottom:0; right:0; width:0; height:0; overflow:hidden;"></div>
+
+<!-- Mute / Unmute Button -->
+<button id="musicBtn" onclick="toggleMusic()">🔇</button>
 
 <script src="https://www.youtube.com/iframe_api"></script>
 
-<script>
-
-/* PASSWORD */
-function checkPassword(){
-const correct="Srinidhi";
-const input=document.getElementById("passwordInput");
-if(input.value===correct){
-document.getElementById("passwordPage").style.display="none";
-}else{
-input.classList.add("shake");
-setTimeout(()=>input.classList.remove("shake"),400);
-document.getElementById("hint").style.display="block";
-document.getElementById("errorMessage").textContent="Oops! That’s not the key… try again, pretty 🥺🎀";
-}
-}
-
-/* GALLERY */
-const paragraphs=["❤️","❤️","❤️","❤️","❤️","❤️","❤️","❤️"];
-
-function setBg(src,index){
-document.body.style.backgroundImage=`url('${src}')`;
-document.getElementById("gallery").style.display="none";
-document.querySelector("h1").style.display="none";
-document.getElementById("photoText").style.display="block";
-document.getElementById("photoText").innerHTML=paragraphs[index];
-document.getElementById("backBtn").style.display="block";
-}
-
-function goBack(){
-document.body.style.backgroundImage="none";
-document.getElementById("gallery").style.display="grid";
-document.querySelector("h1").style.display="block";
-document.getElementById("photoText").style.display="none";
-document.getElementById("backBtn").style.display="none";
-}
-
-/* FLOATING HEARTS */
-function createHeart(){
-const heart=document.createElement("div");
-heart.classList.add("floating-heart");
-heart.innerHTML="❤️";
-heart.style.left=Math.random()*100+"vw";
-heart.style.fontSize=(Math.random()*30+15)+"px";
-document.body.appendChild(heart);
-setTimeout(()=>heart.remove(),6000);
-}
-setInterval(createHeart,200);
-
-/* SHOOTING STARS */
-function createShootingStar(){
-const star=document.createElement("span");
-star.style.top=Math.random()*window.innerHeight+"px";
-star.style.left=Math.random()*window.innerWidth+"px";
-document.querySelector(".shooting-stars").appendChild(star);
-setTimeout(()=>star.remove(),5000);
-}
-setInterval(createShootingStar,3000);
-
-/* YOUTUBE MUSIC (AUTOPLAY ON) */
-let player;
-let isMuted=false;
-
-function onYouTubeIframeAPIReady(){
-player=new YT.Player('player',{
-videoId:'KZGWfHdfWQs',
-playerVars:{
-autoplay:1,
-loop:1,
-playlist:'KZGWfHdfWQs'
-},
-events:{
-onReady:function(event){
-event.target.unMute();
-event.target.playVideo();
-}
-}
-});
-}
-
-function toggleMusic(){
-if(!player) return;
-if(isMuted){
-player.unMute();
-document.getElementById("musicBtn").innerHTML="🔊";
-}else{
-player.mute();
-document.getElementById("musicBtn").innerHTML="🔇";
-}
-isMuted=!isMuted;
-}
-
-</script>
-
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
