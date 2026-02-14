@@ -624,7 +624,7 @@ function onYouTubeIframeAPIReady() {
   player = new YT.Player('player', {
     videoId: 'KZGWfHdfWQs',
     playerVars: {
-      autoplay: 1,
+      autoplay: 0,
       loop: 1,
       playlist: 'KZGWfHdfWQs',
       controls: 0,
@@ -653,18 +653,23 @@ function toggleMusic() {
   isMuted = !isMuted;
 }
 function checkPassword() {
-  const correctPassword = "srinidhi";  
+  const correctPassword = "Srinidhi";
   const input = document.getElementById("passwordInput");
   const hint = document.getElementById("hint");
   const errorMessage = document.getElementById("errorMessage");
 
-  if (input.value === correctPassword) {
+  if (input.value.trim() === correctPassword) {
+
+    // Hide password page FIRST
     document.getElementById("passwordPage").style.display = "none";
 
-    if (player) {
-      player.unMute();
-      player.playVideo();
-    }
+    // Delay music slightly so UI updates first
+    setTimeout(() => {
+      if (player) {
+        player.unMute();
+        player.playVideo();
+      }
+    }, 200);
 
   } else {
     input.classList.add("shake");
@@ -728,6 +733,7 @@ function noClicked() {
   
 </body>
 </html>
+
 
 
 
