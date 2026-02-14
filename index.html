@@ -529,9 +529,6 @@ body {
 <div id="player" style="position:fixed; bottom:0; right:0; width:0; height:0; overflow:hidden;"></div>
 
 <!-- Mute / Unmute Button -->
-<button id="musicBtn" onclick="toggleMusic()">🔇</button>
-
-<script src="https://www.youtube.com/iframe_api"></script>
 
 
 <script>
@@ -626,41 +623,8 @@ function createHeart() {
 
 // Create hearts continuously
 setInterval(createHeart, 180);
-// YouTube Background Music
-let player;
-let isMuted = false;
 
-function onYouTubeIframeAPIReady() {
-  player = new YT.Player('player', {
-    videoId: 'KZGWfHdfWQs',
-    playerVars: {
-      autoplay: 0,
-      loop: 1,
-      playlist: 'KZGWfHdfWQs',
-      controls: 0,
-      showinfo: 0,
-      modestbranding: 1
-    },
-    events: {
-onReady: function (event) {
-  player = event.target;
-}
-      }
-    }
-  });
-}
 
-function toggleMusic() {
-  if (!player) return;
-
-  if (isMuted) {
-    player.unMute();
-    document.getElementById("musicBtn").innerHTML = "🔊";
-  } else {
-    player.mute();
-    document.getElementById("musicBtn").innerHTML = "🔇";
-  }
-  isMuted = !isMuted;
 }
 function checkPassword() {
   const correctPassword = "Srinidhi";
@@ -731,6 +695,7 @@ function noClicked() {
   
 </body>
 </html>
+
 
 
 
