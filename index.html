@@ -381,7 +381,68 @@
     opacity: 0;
   }
 }
+    
+/* 💗 Heart Cursor */
+body {
+  cursor: url("data:image/svg+xml;utf8,
+  <svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'>
+    <path fill='%23ff2e63' d='M12 21s-8-6.58-8-11.5S7.42 2 12 6.09 20 2 20 9.5 12 21 12 21z'/>
+  </svg>") 16 16, auto;
+}
 
+    /* 💌 Valentine Section */
+
+.valentine-card {
+  margin-top: 60px;
+  padding: 40px;
+  text-align: center;
+  background: rgba(255, 182, 193, 0.15);
+  backdrop-filter: blur(8px);
+  border-radius: 25px;
+  box-shadow: 0 0 40px rgba(255, 20, 147, 0.4);
+}
+
+.valentine-card h2 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.5rem;
+  color: #ff69b4;
+  margin-bottom: 25px;
+}
+
+.valentine-buttons button {
+  padding: 12px 30px;
+  margin: 10px;
+  border: none;
+  border-radius: 30px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.valentine-buttons button:first-child {
+  background: #ff2e63;
+  color: white;
+  box-shadow: 0 0 20px rgba(255, 46, 99, 0.6);
+}
+
+.valentine-buttons button:last-child {
+  background: #444;
+  color: white;
+}
+
+.valentine-buttons button:hover {
+  transform: scale(1.1);
+}
+
+#valentineResponse {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+}
+
+    
   </style>
 </head>
 
@@ -453,6 +514,21 @@
     Srinidhi, you are more than words or moments.<br>
     You are my favorite thought, my wildest dream,<br>
     and the one my heart chooses—again and again, always.
+  </div>
+</div>
+  
+  document.getElementById("valentineBox").style.display = "block";
+
+<div id="valentineBox" style="display:none;">
+  <div class="valentine-card">
+    <h2>Will you be my Valentine? 💌</h2>
+
+    <div class="valentine-buttons">
+      <button onclick="yesClicked()">YES!! 💖</button>
+      <button onclick="noClicked()">NO :(</button>
+    </div>
+
+    <p id="valentineResponse"></p>
   </div>
 </div>
 
@@ -613,6 +689,14 @@ function createShootingStar() {
 }
 
 setInterval(createShootingStar, 3250);
+function yesClicked() {
+  document.getElementById("valentineResponse").innerHTML =
+    "You are mine 5ever, cus 5 is more than 4 😌💖<br><br>I love You, Mwaaahhhh 😘💋💞";
+}
+
+function noClicked() {
+  alert("Goshhh You are so Cuteee, but this is the wrong option! 🥺💗");
+}
 
 </script>
 <!-- YouTube Invisible Player -->
@@ -625,6 +709,7 @@ setInterval(createShootingStar, 3250);
 
 </body>
 </html>
+
 
 
 
