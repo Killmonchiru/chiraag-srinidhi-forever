@@ -596,9 +596,12 @@ body {
     document.getElementById("backBtn").style.display = "none";
   }
 
-  function openHidden() {
-    document.getElementById("mainPage").style.display = "none";
-    document.getElementById("hiddenPage").style.display = "block";
+ function openHidden() {
+  document.getElementById("passwordPage").style.display = "none";
+  document.getElementById("hiddenPage").style.display = "block";
+}
+
+
   }
   // Floating hearts generator
 function createHeart() {
@@ -623,7 +626,6 @@ function createHeart() {
 // Create hearts continuously
 setInterval(createHeart, 180);
 
-
 function checkPassword() {
   const correctPassword = "Srinidhi";
   const input = document.getElementById("passwordInput");
@@ -631,8 +633,8 @@ function checkPassword() {
   const errorMessage = document.getElementById("errorMessage");
 
   if (input.value.trim() === correctPassword) {
-    document.getElementById("passwordPage").style.display = "none";
-    playMusic();
+    openHidden();   // 👈 THIS switches the pages
+    playMusic();    // 👈 optional music
   } else {
     input.classList.add("shake");
     setTimeout(() => input.classList.remove("shake"), 400);
@@ -642,6 +644,7 @@ function checkPassword() {
       "Oops! That’s not the key… try again, pretty 🥺🎀";
   }
 }
+
 
 function createShootingStar() {
   const star = document.createElement("span");
@@ -684,6 +687,14 @@ function noClicked() {
     "*"
   );
 }
+function sayYes() {
+  document.getElementById("valentineResponse").innerHTML =
+    "You are mine 5ever, cus 5 is more than 4 💍✨<br><br>I love You, Mwaaahhhh 😘💋💖";
+}
+
+function sayNo() {
+  alert("Goshhh You are so Cuteee, but this is the wrong option! 😤💕");
+}
 
 
 </script>
@@ -701,6 +712,7 @@ function noClicked() {
   
 </body>
 </html>
+
 
 
 
