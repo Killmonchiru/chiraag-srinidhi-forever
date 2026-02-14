@@ -653,28 +653,35 @@ function toggleMusic() {
   isMuted = !isMuted;
 }
 function checkPassword() {
-  const correctPassword = "Srinidhi";  // CHANGE THIS
+  const correctPassword = "SRINIDHI";  // CHANGE THIS
+  const input = document.getElementById("passwordInput");
+  const hint = document.getElementById("hint");
+  const errorMessage = document.getElementById("errorMessage");
+
+function checkPassword() {
+  const correctPassword = "Srinidhi";  
   const input = document.getElementById("passwordInput");
   const hint = document.getElementById("hint");
   const errorMessage = document.getElementById("errorMessage");
 
   if (input.value === correctPassword) {
-  document.getElementById("passwordPage").style.display = "none";
+    document.getElementById("passwordPage").style.display = "none";
 
-  if (player) {
-    player.unMute();
-    player.playVideo();
-  }
-}
+    if (player) {
+      player.unMute();
+      player.playVideo();
+    }
 
   } else {
     input.classList.add("shake");
     setTimeout(() => input.classList.remove("shake"), 400);
 
     hint.style.display = "block";
-    errorMessage.textContent = "Oops! That’s not the key… try again, pretty 🥺🎀";
+    errorMessage.textContent =
+      "Oops! That’s not the key… try again, pretty 🥺🎀";
   }
 }
+
 function createShootingStar() {
   const star = document.createElement("span");
   star.style.top = Math.random() * window.innerHeight + "px";
@@ -721,20 +728,12 @@ function noClicked() {
 
 <script src="https://www.youtube.com/iframe_api"></script>
 
-  function sayYes() {
-    valentineBox.innerHTML =
-      "<h2>You are mine 5ever, cus 5 is more than 4 😘💞</h2>" +
-      "<p>I love You, Mwaaahhhh 💋💕</p>";
-  }
 
-  function sayNo() {
-    alert("Goshhh You are so Cuteee 😍💖, but this is the wrong option! 😌💖");
-  }
-</script>
 
   
 </body>
 </html>
+
 
 
 
