@@ -652,7 +652,8 @@ function toggleMusic() {
   }
   isMuted = !isMuted;
 }
-function checkPassword() {
+
+  function checkPassword() {
   const correctPassword = "Srinidhi";
   const input = document.getElementById("passwordInput");
   const hint = document.getElementById("hint");
@@ -660,16 +661,9 @@ function checkPassword() {
 
   if (input.value.trim() === correctPassword) {
 
-    // Hide password page FIRST
-    document.getElementById("passwordPage").style.display = "none";
-
-    // Delay music slightly so UI updates first
-    setTimeout(() => {
-      if (player) {
-        player.unMute();
-        player.playVideo();
-      }
-    }, 200);
+    // COMPLETELY REMOVE password page
+    const page = document.getElementById("passwordPage");
+    page.parentNode.removeChild(page);
 
   } else {
     input.classList.add("shake");
@@ -733,6 +727,7 @@ function noClicked() {
   
 </body>
 </html>
+
 
 
 
