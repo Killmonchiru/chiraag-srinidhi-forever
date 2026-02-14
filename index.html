@@ -633,6 +633,7 @@ function checkPassword() {
 
   if (input.value.trim() === correctPassword) {
     document.getElementById("passwordPage").style.display = "none";
+playMusic();
 
 if (player) {
   player.playVideo();
@@ -684,32 +685,35 @@ function noClicked() {
   });
 });
 
-let player;
 
-function onYouTubeIframeAPIReady() {
-  player = new YT.Player("player", {
-    height: "0",
-    width: "0",
-    videoId: "KZGWfHdfWQs, // replace this
-    playerVars: {
-      autoplay: 0,
-      controls: 0,
-      loop: 1,
-      playlist: "KZGWfHdfWQs"
-    }
-  });
+
+  function playMusic() {
+  const iframe = document.getElementById("ytMusic");
+  iframe.contentWindow.postMessage(
+    '{"event":"command","func":"playVideo","args":""}',
+    "*"
+  );
 }
-  
+
 </script>
 
 <!-- Hidden YouTube Player -->
 <div id="player" style="display:none;"></div>
 
-<script src="https://www.youtube.com/iframe_api"></script>
+  
+<iframe
+  id="ytMusic"
+  width="0"
+  height="0"
+  src="https://www.youtube.com/embed/KZGWfHdfWQs?enablejsapi=1&loop=1&playlist=VIDEO_ID"
+  frameborder="0"
+  allow="autoplay"
+></iframe>
 
   
 </body>
 </html>
+
 
 
 
