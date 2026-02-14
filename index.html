@@ -633,16 +633,7 @@ function checkPassword() {
   const errorMessage = document.getElementById("errorMessage");
 
   if (input.value.trim() === correctPassword) {
-
-    // Hide password page
     document.getElementById("passwordPage").style.display = "none";
-
-    // Optional: start music automatically
-    if (player) {
-      player.playVideo();
-      player.unMute();
-    }
-
   } else {
     input.classList.add("shake");
     setTimeout(() => input.classList.remove("shake"), 400);
@@ -650,6 +641,9 @@ function checkPassword() {
     hint.style.display = "block";
     errorMessage.textContent =
       "Oops! That’s not the key… try again, pretty 🥺🎀";
+  }
+}
+
   }
 }
 
@@ -695,6 +689,7 @@ function noClicked() {
   
 </body>
 </html>
+
 
 
 
