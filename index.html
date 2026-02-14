@@ -508,6 +508,14 @@ body {
     Srinidhi, you are more than words or moments.<br>
     You are my favorite thought, my wildest dream,<br>
     and the one my heart chooses—again and again, always.
+
+ <br><br>
+
+    <!-- 🔊 Music Button -->
+    <button onclick="playMusic()" class="music-btn">
+      🔊 Play Music
+    </button>
+    
   </div>
 </div>
   
@@ -633,6 +641,7 @@ function checkPassword() {
 
   if (input.value.trim() === correctPassword) {
     document.getElementById("passwordPage").style.display = "none";
+    
 playMusic();
 
 if (player) {
@@ -687,13 +696,14 @@ function noClicked() {
 
 
 
-  function playMusic() {
+ function playMusic() {
   const iframe = document.getElementById("ytMusic");
   iframe.contentWindow.postMessage(
     '{"event":"command","func":"playVideo","args":""}',
     "*"
   );
 }
+
 
 </script>
 
@@ -705,7 +715,7 @@ function noClicked() {
   id="ytMusic"
   width="0"
   height="0"
-  src="https://www.youtube.com/embed/KZGWfHdfWQs?enablejsapi=1&loop=1&playlist=VIDEO_ID"
+  src="https://www.youtube.com/embed/KZGWfHdfWQs?enablejsapi=1&loop=1&playlist=KZGWfHdfWQs"
   frameborder="0"
   allow="autoplay"
 ></iframe>
@@ -713,6 +723,7 @@ function noClicked() {
   
 </body>
 </html>
+
 
 
 
