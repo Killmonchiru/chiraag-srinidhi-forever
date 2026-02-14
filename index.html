@@ -284,7 +284,9 @@
 #mainPage {
   position: relative;
   z-index: 1;
+  display: none;   /* 👈 ADD THIS LINE */
 }
+
 
 .stars {
   position: fixed;
@@ -600,10 +602,12 @@ body {
     document.getElementById("backBtn").style.display = "none";
   }
 
- function openHidden() {
+function openHidden() {
   document.getElementById("passwordPage").style.display = "none";
+  document.getElementById("mainPage").style.display = "none";   // 👈 ADD THIS
   document.getElementById("hiddenPage").style.display = "block";
 }
+
 
 
   // Floating hearts generator
@@ -636,8 +640,9 @@ function checkPassword() {
   const errorMessage = document.getElementById("errorMessage");
 
   if (input.value.trim() === correctPassword) {
-    openHidden();   // 👈 THIS switches the pages
-    playMusic();    // 👈 optional music
+    document.getElementById("passwordPage").style.display = "none";
+    document.getElementById("mainPage").style.display = "block"; // show gallery
+    playMusic(); // optional
   } else {
     input.classList.add("shake");
     setTimeout(() => input.classList.remove("shake"), 400);
@@ -647,6 +652,7 @@ function checkPassword() {
       "Oops! That’s not the key… try again, pretty 🥺🎀";
   }
 }
+
 
 
 function createShootingStar() {
@@ -719,6 +725,7 @@ function sayNo() {
   
 </body>
 </html>
+
 
 
 
