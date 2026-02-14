@@ -524,6 +524,16 @@ body {
   </div>
 </div>
 
+
+<!-- YouTube Invisible Player -->
+<div id="player" style="position:fixed; bottom:0; right:0; width:0; height:0; overflow:hidden;"></div>
+
+<!-- Mute / Unmute Button -->
+<button id="musicBtn" onclick="toggleMusic()">🔇</button>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+
+
 <script>
   const paragraphs = [
     `Your smile has a way of making the world slow down,
@@ -716,19 +726,10 @@ function noClicked() {
 
   
 </script>
-<!-- YouTube Invisible Player -->
-<div id="player" style="position:fixed; bottom:0; right:0; width:0; height:0; overflow:hidden;"></div>
-
-<!-- Mute / Unmute Button -->
-<button id="musicBtn" onclick="toggleMusic()">🔇</button>
-
-<script src="https://www.youtube.com/iframe_api"></script>
-
-
-
   
 </body>
 </html>
+
 
 
 
