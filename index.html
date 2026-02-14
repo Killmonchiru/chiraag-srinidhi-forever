@@ -86,14 +86,18 @@
       background: rgba(255, 120, 150, 1);
     }
 
-    .hidden-page {
-      display: none;
-      min-height: 100vh;
-      background-image: url("images/hearts.jpg");
-      background-size: cover;
-      background-position: center;
-      padding: 80px 24px;
-    }
+ .hidden-page {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9998;   /* 👈 IMPORTANT */
+  overflow-y: auto;
+  background-image: url("images/hearts.jpg");
+  background-size: cover;
+  background-position: center;
+  padding: 80px 24px;
+}
+
 
    .hidden-content {
   max-width: 900px;
@@ -603,11 +607,10 @@ body {
   }
 
 function openHidden() {
-  document.getElementById("passwordPage").style.display = "none";
-  document.getElementById("mainPage").style.display = "none";   // 👈 ADD THIS
+  document.getElementById("mainPage").style.display = "none";
   document.getElementById("hiddenPage").style.display = "block";
+  document.querySelector(".overlay").style.display = "none"; // 👈 ADD THIS
 }
-
 
 
   // Floating hearts generator
