@@ -24,14 +24,6 @@
       box-sizing: border-box;
     }
 
-  body {
-  margin: 0;
-  font-family: 'Playfair Display', Georgia, serif;
-  background: images/("Snake.jpg") no-repeat center center fixed;
-  background-size: cover;
-  color: #fff;
-  transition: background-image 1s ease-in-out;
-}
 
     .overlay {
       position: fixed;
@@ -384,11 +376,9 @@
     
 /* 💗 Heart Cursor */
 body {
-  cursor: url("data:image/svg+xml;utf8,
-  <svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'>
-    <path fill='%23ff2e63' d='M12 21s-8-6.58-8-11.5S7.42 2 12 6.09 20 2 20 9.5 12 21 12 21z'/>
-  </svg>") 16 16, auto;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ff2e63' d='M12 21s-8-6.58-8-11.5S7.42 2 12 6.09 20 2 20 9.5 12 21 12 21z'/%3E%3C/svg%3E") 16 16, auto;
 }
+
 
     /* 💌 Valentine Section */
 
@@ -642,9 +632,9 @@ function onYouTubeIframeAPIReady() {
       modestbranding: 1
     },
     events: {
-      onReady: function (event) {
-        event.target.unmute(); // Autoplay muted
-        event.target.playVideo();
+onReady: function (event) {
+  player = event.target;
+}
       }
     }
   });
@@ -669,7 +659,14 @@ function checkPassword() {
   const errorMessage = document.getElementById("errorMessage");
 
   if (input.value === correctPassword) {
-    document.getElementById("passwordPage").style.display = "none";
+  document.getElementById("passwordPage").style.display = "none";
+
+  if (player) {
+    player.unMute();
+    player.playVideo();
+  }
+}
+
   } else {
     input.classList.add("shake");
     setTimeout(() => input.classList.remove("shake"), 400);
@@ -700,6 +697,21 @@ function noClicked() {
   alert("Goshhh You are so Cuteee, but this is the wrong option! 🥺💗");
 }
 
+  document.addEventListener("DOMContentLoaded", function () {
+  const messageBox = document.querySelector(".hidden-content");
+  const valentineBox = document.getElementById("valentineBox");
+
+  messageBox.addEventListener("scroll", function () {
+    if (
+      messageBox.scrollTop + messageBox.clientHeight >=
+      messageBox.scrollHeight - 5
+    ) {
+      valentineBox.style.display = "block";
+    }
+  });
+});
+
+  
 </script>
 <!-- YouTube Invisible Player -->
 <div id="player" style="position:fixed; bottom:0; right:0; width:0; height:0; overflow:hidden;"></div>
@@ -708,34 +720,6 @@ function noClicked() {
 <button id="musicBtn" onclick="toggleMusic()">🔇</button>
 
 <script src="https://www.youtube.com/iframe_api"></script>
-<script>
-  function showValentine() {
-    document.getElementById("valentineBox").style.display = "block";
-  }
-
-  function sayYes() {
-    document.getElementById("valentineBox").innerHTML =
-      "<h2>You are mine 5ever, cus 5 is more than 4 😘💞</h2>" +
-      "<p>I love You, Mwaaahhhh 💋💕</p>";
-  }
-
-  function sayNo() {
-    alert("Goshhh You are so Cuteee 😍💖, but this is the wrong option!");
-  }
-</script>
-
-  <script>
-  const messageBox = document.querySelector(".hidden-content");
-  const valentineBox = document.getElementById("valentineBox");
-
-  messageBox.addEventListener("scroll", function () {
-    if (
-      messageBox.scrollTop + messageBox.clientHeight >= 
-      messageBox.scrollHeight - 5
-    ) {
-      valentineBox.style.display = "block";
-    }
-  });
 
   function sayYes() {
     valentineBox.innerHTML =
@@ -751,6 +735,7 @@ function noClicked() {
   
 </body>
 </html>
+
 
 
 
