@@ -378,8 +378,6 @@
 body {
   cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ff2e63' d='M12 21s-8-6.58-8-11.5S7.42 2 12 6.09 20 2 20 9.5 12 21 12 21z'/%3E%3C/svg%3E") 16 16, auto;
 }
-
-
     /* 💌 Valentine Section */
 
 .valentine-card {
@@ -532,12 +530,9 @@ body {
   </div>
 </div>
 
-
 <!-- YouTube Invisible Player -->
-<div id="player" style="position:fixed; bottom:0; right:0; width:0; height:0; overflow:hidden;"></div>
 
 <!-- Mute / Unmute Button -->
-
 
 <script>
   const paragraphs = [
@@ -640,13 +635,10 @@ function checkPassword() {
   const errorMessage = document.getElementById("errorMessage");
 
   if (input.value.trim() === correctPassword) {
-    document.getElementById("passwordPage").style.display = "none";
-    
-playMusic();
-
-if (player) {
-  player.playVideo();
+  document.getElementById("passwordPage").style.display = "none";
+  playMusic();
 }
+
     
   } else {
     input.classList.add("shake");
@@ -694,8 +686,6 @@ function noClicked() {
   });
 });
 
-
-
  function playMusic() {
   const iframe = document.getElementById("ytMusic");
   iframe.contentWindow.postMessage(
@@ -708,8 +698,6 @@ function noClicked() {
 </script>
 
 <!-- Hidden YouTube Player -->
-<div id="player" style="display:none;"></div>
-
   
 <iframe
   id="ytMusic"
@@ -719,10 +707,10 @@ function noClicked() {
   frameborder="0"
   allow="autoplay"
 ></iframe>
-
   
 </body>
 </html>
+
 
 
 
