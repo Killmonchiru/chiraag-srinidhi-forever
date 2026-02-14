@@ -95,16 +95,16 @@
       padding: 80px 24px;
     }
 
-    .hidden-content {
-      max-width: 900px;
-      margin: auto;
-      background: rgba(0, 0, 0, 0.55);
-      padding: 40px 44px;
-      border-radius: 28px;
-      font-size: 1.5rem;
-      line-height: 1.8;
-      opacity: 0.95;
-    }
+   .hidden-content {
+  max-width: 900px;
+  margin: auto;
+  background: rgba(0, 0, 0, 0.65);
+  padding: 50px 60px;
+  border-radius: 28px;
+  font-size: 1.6rem;
+  line-height: 1.9;
+}
+
 
     footer {
       margin-top: 60px;
@@ -430,10 +430,6 @@ body {
   color: white;
 }
 
-    .hidden-content {
-  max-height: 300px;   /* adjust if needed */
-  overflow-y: auto;
-}
 
   </style>
 </head>
@@ -635,11 +631,8 @@ function checkPassword() {
   const errorMessage = document.getElementById("errorMessage");
 
   if (input.value.trim() === correctPassword) {
-  document.getElementById("passwordPage").style.display = "none";
-  playMusic();
-}
-
-    
+    document.getElementById("passwordPage").style.display = "none";
+    playMusic();
   } else {
     input.classList.add("shake");
     setTimeout(() => input.classList.remove("shake"), 400);
@@ -672,19 +665,17 @@ function noClicked() {
   alert("Goshhh You are so Cuteee, but this is the wrong option! 🥺💗");
 }
 
-  document.addEventListener("DOMContentLoaded", function () {
-  const messageBox = document.querySelector(".hidden-content");
+  window.addEventListener("scroll", function () {
+  const hiddenPage = document.getElementById("hiddenPage");
   const valentineBox = document.getElementById("valentineBox");
 
-  messageBox.addEventListener("scroll", function () {
-    if (
-      messageBox.scrollTop + messageBox.clientHeight >=
-      messageBox.scrollHeight - 5
-    ) {
+  if (hiddenPage.style.display === "block") {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10) {
       valentineBox.style.display = "block";
     }
-  });
+  }
 });
+
 
  function playMusic() {
   const iframe = document.getElementById("ytMusic");
@@ -710,6 +701,7 @@ function noClicked() {
   
 </body>
 </html>
+
 
 
 
