@@ -103,6 +103,8 @@
   border-radius: 28px;
   font-size: 1.6rem;
   line-height: 1.9;
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 
@@ -602,7 +604,6 @@ body {
 }
 
 
-  }
   // Floating hearts generator
 function createHeart() {
   const heart = document.createElement("div");
@@ -668,16 +669,20 @@ function noClicked() {
   alert("Goshhh You are so Cuteee, but this is the wrong option! 🥺💗");
 }
 
-  window.addEventListener("scroll", function () {
-  const hiddenPage = document.getElementById("hiddenPage");
+document.addEventListener("DOMContentLoaded", function () {
+  const messageBox = document.querySelector(".hidden-content");
   const valentineBox = document.getElementById("valentineBox");
 
-  if (hiddenPage.style.display === "block") {
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10) {
+  messageBox.addEventListener("scroll", function () {
+    if (
+      messageBox.scrollTop + messageBox.clientHeight >=
+      messageBox.scrollHeight - 5
+    ) {
       valentineBox.style.display = "block";
     }
-  }
+  });
 });
+
 
 
  function playMusic() {
