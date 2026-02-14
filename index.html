@@ -442,7 +442,11 @@ body {
   color: white;
 }
 
-    
+    .hidden-content {
+  max-height: 300px;   /* adjust if needed */
+  overflow-y: auto;
+}
+
   </style>
 </head>
 
@@ -517,9 +521,7 @@ body {
   </div>
 </div>
   
-  document.getElementById("valentineBox").style.display = "block";
-
-<div id="valentineBox" style="display:none;">
+ <div id="valentineBox" style="display:none;">
   <div class="valentine-card">
     <h2>Will you be my Valentine? 💌</h2>
 
@@ -706,9 +708,50 @@ function noClicked() {
 <button id="musicBtn" onclick="toggleMusic()">🔇</button>
 
 <script src="https://www.youtube.com/iframe_api"></script>
+<script>
+  function showValentine() {
+    document.getElementById("valentineBox").style.display = "block";
+  }
 
+  function sayYes() {
+    document.getElementById("valentineBox").innerHTML =
+      "<h2>You are mine 5ever, cus 5 is more than 4 😘💞</h2>" +
+      "<p>I love You, Mwaaahhhh 💋💕</p>";
+  }
+
+  function sayNo() {
+    alert("Goshhh You are so Cuteee 😍💖, but this is the wrong option!");
+  }
+</script>
+
+  <script>
+  const messageBox = document.querySelector(".hidden-content");
+  const valentineBox = document.getElementById("valentineBox");
+
+  messageBox.addEventListener("scroll", function () {
+    if (
+      messageBox.scrollTop + messageBox.clientHeight >= 
+      messageBox.scrollHeight - 5
+    ) {
+      valentineBox.style.display = "block";
+    }
+  });
+
+  function sayYes() {
+    valentineBox.innerHTML =
+      "<h2>You are mine 5ever, cus 5 is more than 4 😘💞</h2>" +
+      "<p>I love You, Mwaaahhhh 💋💕</p>";
+  }
+
+  function sayNo() {
+    alert("Goshhh You are so Cuteee 😍💖, but this is the wrong option! 😌💖");
+  }
+</script>
+
+  
 </body>
 </html>
+
 
 
 
