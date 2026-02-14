@@ -633,6 +633,11 @@ function checkPassword() {
 
   if (input.value.trim() === correctPassword) {
     document.getElementById("passwordPage").style.display = "none";
+
+if (player) {
+  player.playVideo();
+}
+    
   } else {
     input.classList.add("shake");
     setTimeout(() => input.classList.remove("shake"), 400);
@@ -679,11 +684,33 @@ function noClicked() {
   });
 });
 
+let player;
+
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player("player", {
+    height: "0",
+    width: "0",
+    videoId: "KZGWfHdfWQs, // replace this
+    playerVars: {
+      autoplay: 0,
+      controls: 0,
+      loop: 1,
+      playlist: "KZGWfHdfWQs"
+    }
+  });
+}
   
 </script>
+
+<!-- Hidden YouTube Player -->
+<div id="player" style="display:none;"></div>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+
   
 </body>
 </html>
+
 
 
 
