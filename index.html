@@ -663,9 +663,6 @@ function toggleMusic() {
   isMuted = !isMuted;
 }
 function checkPassword() {
-  alert("Function is running!");
-
-  function checkPassword() {
   const correctPassword = "Srinidhi";
   const input = document.getElementById("passwordInput");
   const hint = document.getElementById("hint");
@@ -673,9 +670,14 @@ function checkPassword() {
 
   if (input.value.trim() === correctPassword) {
 
-    // COMPLETELY REMOVE password page
-    const page = document.getElementById("passwordPage");
-    page.parentNode.removeChild(page);
+    // Hide password page
+    document.getElementById("passwordPage").style.display = "none";
+
+    // Optional: start music automatically
+    if (player) {
+      player.playVideo();
+      player.unMute();
+    }
 
   } else {
     input.classList.add("shake");
@@ -729,6 +731,7 @@ function noClicked() {
   
 </body>
 </html>
+
 
 
 
